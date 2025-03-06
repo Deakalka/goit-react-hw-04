@@ -1,34 +1,94 @@
-.modal {
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal {
     position: relative;
-    top: 50%;
-    left: 50%;
-    right: auto;
-    bottom: auto;
-    transform: translate(-50%, -50%);
     background: white;
     border-radius: var(--radius);
-    padding: 1rem;
+    padding: 1.5rem;
     max-width: 90vw;
     max-height: 90vh;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     outline: none;
+    overflow: auto;
+    width: 90%;
+    max-width: 900px;
+  }
+  
+  .modalContent {
+    display: flex;
+    flex-direction: column;
   }
   
   .modalImg {
     max-width: 100%;
-    max-height: calc(90vh - 4rem);
+    max-height: 60vh;
     display: block;
     margin: 0 auto;
     border-radius: var(--radius);
     object-fit: contain;
   }
   
+  .modalInfo {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+  }
+  
+  .modalTitle {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+  }
+  
+  .modalDescription {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    color: var(--text-dark);
+    font-style: italic;
+  }
+  
+  .modalDetails {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .modalDetail {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-light);
+  }
+  
+  .icon {
+    color: var(--primary-color);
+    flex-shrink: 0;
+  }
+  
+  .username {
+    margin-left: 0.5rem;
+    color: var(--primary-color);
+    font-weight: 500;
+  }
+  
   .closeButton {
     position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    width: 2rem;
-    height: 2rem;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: 50%;
     background-color: var(--primary-color);
     color: white;
@@ -36,7 +96,7 @@
     align-items: center;
     justify-content: center;
     border: none;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     cursor: pointer;
     transition: all 0.2s ease;
     line-height: 1;
@@ -47,4 +107,29 @@
   .closeButton:hover {
     background-color: var(--primary-hover);
     transform: scale(1.1);
+  }
+  
+  @media (min-width: 768px) {
+    .modalContent {
+      flex-direction: row;
+      gap: 2rem;
+    }
+    
+    .modalImg {
+      max-width: 60%;
+      max-height: 70vh;
+    }
+    
+    .modalInfo {
+      flex: 1;
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .modalDetails {
+      grid-template-columns: 1fr;
+    }
   }

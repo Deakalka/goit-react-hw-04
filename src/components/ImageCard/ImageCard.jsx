@@ -10,7 +10,12 @@ const ImageCard = ({ card, onSelect }) => {
         onClick={() => {
           onSelect(true, {
             src: card.urls.regular,
-            description: card.description,
+            description: card.description || card.alt_description || "No description available",
+            author: card.user.name || "Unknown author",
+            username: card.user.username,
+            likes: card.likes,
+            date: new Date(card.created_at).toLocaleDateString(),
+            location: card.user.location || "Unknown location"
           });
         }}
       />
