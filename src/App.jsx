@@ -4,7 +4,7 @@ import ImageGallery from "./components/ImageGallery/ImageGallery";
 import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./components/ImageModal/ImageModal";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
-import  "./App.css";
+import "./App.css";
 
 import toast, { Toaster } from "react-hot-toast";
 import { useEffect, useState } from "react";
@@ -61,19 +61,28 @@ function App() {
     setModal(state);
     if (state) setSelectedPhoto(photo);
   }
+  
   return (
     <>
       <SearchBar onSubmit={handleQuery} isLoading={isLoading} />
-      <div>
+      <div className="container">
         {photos.length > 0 && !error && (
           <ImageGallery photos={photos} onSelect={handleModal} />
+        )}
+        {error && (
+          <div className="error-container">
+            <ErrorMessage message={error} />
+          </div>
+        )}
+        {isLoading && !error && (
+          <div className="loader-container">
+            <Loader />
+          </div>
         )}
         {totalPages > page && !isLoading && !error && (
           <LoadMoreBtn onClick={handleLoadMore}>Load More</LoadMoreBtn>
         )}
-        {error && <ErrorMessage />}
-        {isLoading && !error && <Loader />}
-        <ImageModal isOpen={modal} photo = {selectedPhoto} onChange={handleModal}/>
+        <ImageModal isOpen={modal} photo={selectedPhoto} onChange={handleModal} />
       </div>
       <Toaster position="top-right" />
     </>

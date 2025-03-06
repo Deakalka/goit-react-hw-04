@@ -1,0 +1,16 @@
+.error {
+    text-align: center;
+    color: #ef4444;
+    font-size: 1.25rem;
+    padding: 1rem;
+    background-color: #fee2e2;
+    border-radius: var(--radius);
+    border-left: 4px solid #ef4444;
+    margin: 2rem auto;
+    max-width: 600px;
+  }
+  
+  .error svg {
+    margin-right: 0.5rem;
+    vertical-align: middle;
+  }

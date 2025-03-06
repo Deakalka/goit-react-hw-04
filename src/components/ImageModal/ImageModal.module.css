@@ -1,0 +1,50 @@
+.modal {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: var(--radius);
+    padding: 1rem;
+    max-width: 90vw;
+    max-height: 90vh;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    outline: none;
+  }
+  
+  .modalImg {
+    max-width: 100%;
+    max-height: calc(90vh - 4rem);
+    display: block;
+    margin: 0 auto;
+    border-radius: var(--radius);
+    object-fit: contain;
+  }
+  
+  .closeButton {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    line-height: 1;
+    padding: 0;
+    z-index: 10;
+  }
+  
+  .closeButton:hover {
+    background-color: var(--primary-hover);
+    transform: scale(1.1);
+  }
